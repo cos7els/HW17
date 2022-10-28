@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DocsWorker {
-    private static final Pattern DOC_NUMBER_PATTERN = Pattern.compile("^[0-9]{4}-[a-z]{3}-[0-9]{4}-[a-z]{3}-[0-9][a-z][0-9][a-z]");
-    private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("\\+\\d{3}\\(\\d{2}\\)\\d{7}");
-    private static final Pattern EMAIL_PATTERN = Pattern.compile("[0-9a-z]{4,12}@[a-z]{2,12}\\.[a-z]{2,3}");
+    private final Pattern DOC_NUMBER_PATTERN = Pattern.compile("^[0-9]{4}-[a-z]{3}-[0-9]{4}-[a-z]{3}-[0-9][a-z][0-9][a-z]");
+    private final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("\\+\\d{3}\\(\\d{2}\\)\\d{7}");
+    private final Pattern EMAIL_PATTERN = Pattern.compile("[0-9a-z]{4,12}@[a-z]{2,12}\\.[a-z]{2,3}");
     private Map<String, Document> data = new HashMap<>();
 
     public void start() {
@@ -33,7 +33,7 @@ public class DocsWorker {
             System.out.println("There is no any files");
         }
         for (int i = 0, j = 0; i < files.length && j < count; i++) {
-            if (files[i].getName().endsWith(".txt")) {
+            if (files[i].isFile() && files[i].getName().endsWith(".txt")) {
                 txtCounter++;
                 j++;
                 readData(files[i]);
