@@ -17,7 +17,7 @@ public class Main {
         String read;
         System.out.print("""
                 ------------------------------
-                 "Welcome to IP checker v1.0"
+                  Welcome to IP checker v1.0
                 ------------------------------
                 """);
         try (Scanner in = new Scanner(System.in)) {
